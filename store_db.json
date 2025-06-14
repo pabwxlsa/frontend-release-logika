@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Металовар 2000",
+        "price": 40,
+        "image": "https://img.freepik.com/free-photo/metallic-teapot-with-black-handle_1194-648.jpg?ga=GA1.1.1844561856.1749912360&semt=ais_hybrid&w=740",
+        "description": "Надпотужний чайник, який за лічені секунди нагрівається на газовій плиті. Він знадобиться і в лісі, і на озері, і дома - всюди, де ви є."
+    },
+    {
+        "title": "Банани Змій Горинич",
+        "price": 10,
+        "image": "https://img.freepik.com/premium-photo/banana-bunch-bananas-isolated-white-background_88281-98.jpg?ga=GA1.1.1844561856.1749912360&semt=ais_hybrid&w=740",
+        "description": "Унікальий сорт бананів під назвою Змій Горинич ніколи не розчіплюється, а їсться не розриваючись один від одного. Цей сорт не дивлячись на тяжкість у вживанні є самим смачним і солодки сортом бананів."
+    },
+    {
+        "title": "Бодя",
+        "price": 29519,
+        "image": "https://img.freepik.com/premium-photo/black-spider-is-white-background-with-white-background_842224-432.jpg?ga=GA1.1.1844561856.1749912360&semt=ais_hybrid&w=740",
+        "description": "Чудове приспособлення для устрашіння свого друга. Положіть такого резинового павука Богдана біля голови сплячого друга та коли він проснеться - ви не зможете стримати свій сміх. "
+    }
+]
