@@ -1,255 +1,366 @@
-@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+/* Скидання стандартних відступів та розмірів */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
 
+/* Змінні для тем та кольорів */
+:root {
+  --primary-color: #5a4fcf;
+  --secondary-color: #38bdf8;
+  --light-bg: #f6f7fb;
+  --dark-bg: #2a2a2a;
+  --light-text: #2a2a2a;
+  --dark-text: #f1f1f1;
+  --header-bg: #fff;
+  --footer-bg: #312e81;
+}
 
-html {
-    font-size: 18px;
+/* Базовий стиль сторінки */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--light-text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Базові стилі вже існують, ось правило для темної теми */
+body.dark-theme {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* Приміром, змінюємо фон хедера */
+body.dark-theme .site-header {
+  background-color: #1a1a1a;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Змінюємо фон футера */
+body.dark-theme .site-footer {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+}
+
+/* Змінюємо колір навігаційних посилань */
+body.dark-theme .nav-menu li a {
+  color: #f1f1f1 !important;
+}
+
+/* Приклад для кнопок */
+body.dark-theme .buy-btn {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Якщо є окремо задані фони для секцій */
+body.dark-theme .hero-section {
+  background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+}
+
+/* Header */
+.site-header {
+  background-color: var(--header-bg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 50px;
+  margin-right: 10px;
+}
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Меню навігації */
+.navigation .nav-menu {
+  display: flex;
+  list-style: none;
+}
+.navigation .nav-menu li a {
+  color: var(--primary-color);
+  margin: 0 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.navigation .nav-menu li a:hover {
+  color: var(--secondary-color);
+}
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* Кнопка перемикання теми */
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* Герой-секція */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+.hero-content p {
+  font-size: 1.2rem;
+}
+
+/* Секція товарів */
+.products-section {
+  padding: 60px 20px;
+  background-color: var(--light-bg);
+}
+.products-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.product-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.product-card {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+.product-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.product-card .price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+.buy-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.buy-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Секція "Про нас" */
+.about-section {
+  padding: 60px 20px;
+  background-color: #f0f0ff;
+}
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+.about-text h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.about-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Контактна секція */
+.contact-section {
+  padding: 60px 20px;
+  background-color: #fff;
+}
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.submit-btn {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.submit-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--footer-bg);
+  color: #f1f1f1;
+  text-align: center;
+  padding: 20px;
+}
+.site-footer .attributions a {
+  color: #ffd700;
+}
+
+/* Стилі модального вікна */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Респонсивні налаштування */
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+  }
+  .nav-menu.active {
+    display: flex;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px 20px;
+  }
+  .about-container {
+    flex-direction: column;
+  }
+}
+
+:root {
+  --bg-main: #f6f7fb;
+  --text-color: #2a2a2a;
+  --section-bg: #ffffff;
 }
 
 body {
-    background-color: #272727;
-    color: white;
-    font-family: "Martian Mono", monospace;
-    margin: 0px;
-    /* забираємо стандартні відступи в тега body */
+  background-color: var(--bg-main);
+  color: var(--text-color);
 }
 
-body.light-theme {
-    background-color: #e6e6e6;
-    color: rgb(24, 24, 24);
+.products-section,
+.contact-section {
+  background-color: var(--section-bg);
 }
 
-header{
-    background: #272727;
-}
-.btn-search{
-    border-radius: 30px;
-}
-.banner {
-    width: 100%;
-    height: 90vh;
-    background: url('https://img.freepik.com/free-photo/grunge-black-concrete-textured-background_53876-124541.jpg?ga=GA1.1.1844561856.1749912360&semt=ais_hybrid&w=740');
-    background-size: cover;
-    background-position: center center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    flex-direction: column;
+/* При перемиканні теми */
+body.dark-theme {
+  --bg-main: #2a2a2a;
+  --text-color: #f1f1f1;
+  --section-bg: #2b2b2b;
 }
 
-
-.banner h1 {
-    font-size: 3rem;
-    text-align: center;
+:root {
+  --bg-main: #f6f7fb;
+  --text-color: #2a2a2a;
+  --section-bg: #ffffff;
 }
 
-/* Стилі карточок взято з 4 уроку 2 модуля (сайт за макетом)  */
-
-.my-card {
-    padding: 28px;
-    background: transparent;
-    transition: background .2s linear;
-    border-radius: 10px;
-    max-width: 350px;
+body {
+  background-color: var(--bg-main);
+  color: var(--text-color);
 }
 
-.my-card:hover {
-    background: #DCE5E2;
-    cursor: pointer;
-    transition: background .2s linear;
-    color: #272727;
+.product-card, 
+.about-section {
+  background-color: var(--section-bg);
 }
 
-.light-theme .my-card:hover {
-    background: #ffffff;
-
-}
-
-.text-my-card {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 20px;
-}
-
-.description-card {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    /* number of lines to show */
-    -webkit-box-orient: vertical;
-    font-size: 0.7rem;
-
-}
-
-.price-card {
-    font-size: 1rem;
-    line-height: 1rem;
-    /* 120% */
-    color: rgb(154, 131, 255);
-    display: flex;
-    gap: 5px;
-    align-items: center;
-}
-
-.my-card img {
-    width: 244px;
-    height: 214px;
-    object-fit: contain;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
-}
-
-.container-cards {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    flex-grow: 1;
-    align-items: flex-start;
-    align-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 72px;
-}
-
-footer {
-    margin-top: 50px;
-    background: rgb(73, 73, 73);
-    padding: 50px 100px;
-}
-
-footer {
-    color: #c8c8c8;
-}
-
-.attribution {
-    color: #a8a8a8;
-    font-size: 12px;
-}
-
-.attribution a {
-    color: #a8a8a8;
-}
-
-#themeToggle {
-    background: transparent;
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
-    border-radius: 40px;
-    transition: 0.4s transform linear;
-    margin: 10px;
-    border-color: transparent;
-}
-
-#themeToggle:hover {
-    transform: scale(1.1);
-    transition: 0.4s transform linear;
-    box-shadow: inset 0px 0px 5px rgb(0, 0, 0);
-}
-
-#themeToggle:active {
-    transform: scale(0.9);
-    transition-duration: .2s;
-}
-
-/* Проста анімація появи тексту */
-
-header.fixed {
-    position: fixed;
-    /* Фіксоване позиціонування */
-    top: 0;
-    /* Закріплено зверху */
-    width: 100%;
-    /* Ширина за всю ширину вікна */
-    background: #272727;
-    max-width: 100%;
-    z-index: 100;
-}
-
-
-/* Кнопка Кошик */
-/* Код взято з https://uiverse.io/vinodjangid07/ordinary-swan-71 */
-
-.cart-btn {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: linear-gradient(to left, rgb(173, 154, 255), rgb(149, 110, 255));
-    border-radius: 30px;
-    color: rgb(255, 255, 255);
-    font-weight: 600;
-    font-size: 0.9em;
-    font-family: "Martian Mono", monospace;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    transition-duration: .2s;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
-}
-
-.bell {
-    width: 25px;
-}
-
-
-.cart-btn:hover {
-    background: linear-gradient(to left, rgb(154, 131, 255), rgb(135, 91, 255));
-}
-
-.cart-btn:active {
-    transform: scale(0.97);
-    transition-duration: .2s;
-}
-
-.cart-btn:hover .bell {
-    animation: bellRing 0.9s both;
-}
-
-.cart-btn div {
-    position: relative;
-}
-
-.cart-counter {
-    background: #fff;
-    font-size: small;
-    color: rgb(135, 91, 255);
-    border-radius: 100px;
-    padding: 0 .2em;
-    position: absolute;
-    /* Змініть позицію на абсолютну */
-    top: 0;
-    /* Відступ зверху */
-    right: 0;
-    /* Відступ справа */
-}
-
-
-/* bell ringing animation keyframes*/
-@keyframes bellRing {
-
-    0%,
-    100% {
-        transform-origin: top;
-    }
-
-    15% {
-        transform: rotateZ(10deg);
-    }
-
-    30% {
-        transform: rotateZ(-10deg);
-    }
-
-    45% {
-        transform: rotateZ(5deg);
-    }
-
-    60% {
-        transform: rotateZ(-5deg);
-    }
-
-    75% {
-        transform: rotateZ(2deg);
-    }
+/* Коли активна темна тема */
+body.dark-theme {
+  --bg-main: #2a2a2a;
+  --text-color: #f1f1f1;
+  --section-bg: #2b2b2b;
 }
